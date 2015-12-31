@@ -8,10 +8,35 @@ chrome.extension.sendMessage({}, function(response) {
 		//console.log("Hello. This message was sent from scripts/inject.js");
 		// ----------------------------------------------------------
 		var current = window.location.href;
+		var bar = document.createElement("div");
+			bar.innerHTML = "GET BACK TO WORK!";
+			bar.style.color = "white"
+			bar.style.backgroundColor = "dodgerblue";
+			bar.style.textAlign = "center";
+			bar.style.position="fixed"; 
+			bar.style.top ="1%";
+			bar.style.left ="50%";
+			bar.style.padding = "2px";
+			bar.style.zIndex = "10000";
+			bar.style.borderRadius = "5px";
+
 
 		chrome.storage.sync.get({
-		    blackList: 'error'
+		    blackList: 'error',
+		    notif_size: 'small'
 		}, function(items) {
+
+			if(items.notif_size == 'medium'){
+				bar.style.padding = "8px";
+			}
+			else if(items.notif_size == 'large'){
+				bar.style.padding = "16px";
+			}
+			else{
+				bar.style.padding = "4px";
+			}
+
+
 		    if(items.blackList != 'error'){
 				
 				sites = items.blackList.split(',');
@@ -25,18 +50,9 @@ chrome.extension.sendMessage({}, function(response) {
 
 						found = 1;
 
-						var bar = document.createElement("div");
-						bar.innerHTML = "GET BACK TO WORK!";
-						bar.style.color = "white"
-						bar.style.backgroundColor = "dodgerblue";
-						bar.style.textAlign = "center";
+
 						document.body.insertBefore(bar, document.body.firstChild);
-						bar.style.position="fixed"; 
-						bar.style.top ="1%";
-						bar.style.left ="50%";
-						bar.style.padding = "2px";
-						bar.style.zIndex = "10000";
-						bar.style.borderRadius = "5px";
+
 
 					}
 				}
@@ -63,18 +79,7 @@ chrome.extension.sendMessage({}, function(response) {
 
 						found = 1;
 
-						var bar = document.createElement("div");
-						bar.innerHTML = "GET BACK TO WORK!";
-						bar.style.color = "white"
-						bar.style.backgroundColor = "dodgerblue";
-						bar.style.textAlign = "center";
 						document.body.insertBefore(bar, document.body.firstChild);
-						bar.style.position="fixed"; 
-						bar.style.top ="1%";
-						bar.style.left ="50%";
-						bar.style.padding = "2px";
-						bar.style.zIndex = "10000";
-						bar.style.borderRadius = "5px";
 
 					}
 				}
