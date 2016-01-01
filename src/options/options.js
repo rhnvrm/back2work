@@ -3,11 +3,15 @@ function save_options() {
   var blist = document.getElementById('blist').value;
   var size  = document.getElementById('size').value;
   var position = document.getElementById('position').value;
+  var sound = document.getElementById('sound').checked ? true : false;
+
+  console.log(sound);
 
   chrome.storage.sync.set({
     blackList: blist,
     notif_size: size,
-    notif_pos: position
+    notif_pos: position,
+    sound_on: sound
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -25,11 +29,13 @@ function restore_options() {
   chrome.storage.sync.get({
     blackList: 'facebook.com,reddit.com',
     notif_size: 'small',
-    notif_pos: '8'
+    notif_pos: '8',
+    sound_on: true
   }, function(items) {
     document.getElementById('blist').value = items.blackList;
     document.getElementById('size').value = items.notif_size;
     document.getElementById('position').value = items.notif_pos;
+    document.getElementById('sound').checked = items.sound_on;
   });
 }
 

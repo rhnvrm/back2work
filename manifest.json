@@ -30,5 +30,8 @@
         "src/inject/inject.js"
       ]
     }
+  ],
+  "web_accessible_resources": [
+    "src/assets/sounds/alert.ogg"
   ]
 }

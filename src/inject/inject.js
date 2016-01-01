@@ -14,16 +14,33 @@ chrome.extension.sendMessage({}, function(response) {
 			bar.style.backgroundColor = "dodgerblue";
 			bar.style.textAlign = "center";
 			bar.style.position="fixed"; 
-
 			bar.style.padding = "2px";
 			bar.style.zIndex = "10000";
 			bar.style.borderRadius = "5px";
 
+		var overlay = document.createElement("div");
+			overlay.setAttribute("id", "overlay");
+			overlay.style.width = "100%";
+			overlay.style.height = "100%";
+			overlay.style.background = "rgba(255,255,255,0.8)";
+			overlay.style.top = "0";
+			overlay.style.left = "0";
+			overlay.style.position = "absolute";
+			overlay.style.zIndex = "9999";
+
+		var source = document.createElement("source");
+			source.src = chrome.extension.getURL("src/assets/sounds/alert.ogg");
+			source.type = "audio/ogg";
+			
+		var audio = document.createElement("audio")
+			audio.setAttribute("loop", "true");
+			audio.appendChild(source);
 
 		chrome.storage.sync.get({
 		    blackList: 'error',
 		    notif_size: 'small',
-		    notif_pos: '8'
+		    notif_pos: '8',
+		    sound_on: false
 		}, function(items) {
 
 			if(items.notif_size == 'medium'){
@@ -74,7 +91,6 @@ chrome.extension.sendMessage({}, function(response) {
 				bar.style.left ="50%";
 			}
 
-
 		    if(items.blackList != 'error'){
 				
 				sites = items.blackList.split(',');
@@ -88,10 +104,9 @@ chrome.extension.sendMessage({}, function(response) {
 
 						found = 1;
 
-
-						document.body.insertBefore(bar, document.body.firstChild);
-
-
+						insertBlur();
+						insertBar();
+						insertAudio(items.sound_on);
 					}
 				}
 
@@ -117,12 +132,29 @@ chrome.extension.sendMessage({}, function(response) {
 
 						found = 1;
 
-						document.body.insertBefore(bar, document.body.firstChild);
-
+						insertBlur();
+						insertBar();
+						insertAudio(items.sound_on);
 					}
 				}
 		    }
 		});
+
+		function insertAudio(sound_active){
+			if(sound_active){
+				document.body.insertBefore(audio, document.body.firstChild);
+				audio.play();
+			}
+		}
+
+		function insertBlur(){
+			document.body.style.overflow = "hidden";
+			document.body.insertBefore(overlay, document.body.firstChild);
+		}
+
+		function insertBar(){
+			document.body.insertBefore(bar, document.body.firstChild);
+		}
 
 	}
 	}, 10);
