@@ -14,8 +14,7 @@ chrome.extension.sendMessage({}, function(response) {
 			bar.style.backgroundColor = "dodgerblue";
 			bar.style.textAlign = "center";
 			bar.style.position="fixed"; 
-			bar.style.top ="1%";
-			bar.style.left ="50%";
+
 			bar.style.padding = "2px";
 			bar.style.zIndex = "10000";
 			bar.style.borderRadius = "5px";
@@ -23,7 +22,8 @@ chrome.extension.sendMessage({}, function(response) {
 
 		chrome.storage.sync.get({
 		    blackList: 'error',
-		    notif_size: 'small'
+		    notif_size: 'small',
+		    notif_pos: '8'
 		}, function(items) {
 
 			if(items.notif_size == 'medium'){
@@ -34,6 +34,44 @@ chrome.extension.sendMessage({}, function(response) {
 			}
 			else{
 				bar.style.padding = "4px";
+			}
+			
+			if(items.notif_pos == 9){
+				bar.style.top ="1%";
+				bar.style.right ="1%";
+			}
+		    else if(items.notif_pos == 7) {   				
+		    	bar.style.top ="1%";
+				bar.style.left ="1%";
+		    }
+		    else if(items.notif_pos == 8) {
+				bar.style.top ="1%";
+				bar.style.left ="50%";
+				console.log('here');
+			}
+			if(items.notif_pos == 6){
+				bar.style.top ="50%";
+				bar.style.right ="1%";
+			}
+		    else if(items.notif_pos == 4) {   				
+		    	bar.style.top ="50%";
+				bar.style.left ="1%";
+		    }
+		    else if(items.notif_pos == 5) {
+				bar.style.top ="50%";
+				bar.style.left ="50%";
+			}
+			if(items.notif_pos == 3){
+				bar.style.bottom ="1%";
+				bar.style.right ="1%";
+			}
+		    else if(items.notif_pos == 1) {   				
+		    	bar.style.bottom ="1%";
+				bar.style.left ="1%";
+		    }
+		    else if(items.notif_pos == 2) {
+				bar.style.bottom ="1%";
+				bar.style.left ="50%";
 			}
 
 
