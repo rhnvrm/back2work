@@ -8,6 +8,7 @@ chrome.extension.sendMessage({}, function(response) {
 		//console.log("Hello. This message was sent from scripts/inject.js");
 		// ----------------------------------------------------------
 		var current = window.location.href;
+		console.log(current);
 		var bar = document.createElement("div");
 			bar.innerHTML = chrome.i18n.getMessage("msgGetBackToWork");
 			bar.style.color = "white"
@@ -15,7 +16,7 @@ chrome.extension.sendMessage({}, function(response) {
 			bar.style.textAlign = "center";
 			bar.style.position="fixed"; 
 			bar.style.padding = "2px";
-			bar.style.zIndex = "10000";
+			bar.style.zIndex = "99999";
 			bar.style.borderRadius = "5px";
 
 		var overlay = document.createElement("div");
@@ -26,7 +27,7 @@ chrome.extension.sendMessage({}, function(response) {
 			overlay.style.top = "0";
 			overlay.style.left = "0";
 			overlay.style.position = "absolute";
-			overlay.style.zIndex = "9999";
+			overlay.style.zIndex = "99998";
 
 		var source = document.createElement("source");
 			source.src = chrome.extension.getURL("src/assets/sounds/alert.ogg");
@@ -39,9 +40,9 @@ chrome.extension.sendMessage({}, function(response) {
 		    blackList: 'error',
 		    notif_size: 'small',
 		    notif_pos: '8',
+		    prevent_on: false,
 		    sound_on: false,
-		    loop_on: false,
-		    prevent_on: false
+		    loop_on: false
 		}, function(items) {
 
 			if(items.notif_size == 'medium'){

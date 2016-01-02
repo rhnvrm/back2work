@@ -39,6 +39,7 @@ function restore_options() {
     document.getElementById('blist').value = items.blackList;
     document.getElementById('size').value = items.notif_size;
     document.getElementById('position').value = items.notif_pos;
+    document.getElementById('prevent').checked = items.prevent_on;
     document.getElementById('sound').checked = items.sound_on;
     document.getElementById('loop').checked = items.loop_on;
   });
