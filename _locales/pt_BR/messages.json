@@ -23,8 +23,16 @@
     "message": "Alerta sonoro",
     "description": "Label on options page"
   },
+  "optionsLoop":{
+    "message": "Repetir alerta",
+    "description": "Label on options page"
+  },
   "optionsSave":{
     "message": "Salvar",
     "description": "Save button on options page"
+  },
+  "optionsSaved":{
+    "message": "Opções salvas.",
+    "description": "Return message on options page"
   }
 }

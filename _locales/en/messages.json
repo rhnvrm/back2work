@@ -23,8 +23,16 @@
     "message": "Sound alert",
     "description": "Label on options page"
   },
+  "optionsLoop":{
+    "message": "Alert loop",
+    "description": "Label on options page"
+  },
   "optionsSave":{
     "message": "Save",
     "description": "Save button on options page"
+  },
+  "optionsSaved":{
+    "message": "Options saved.",
+    "description": "Return message on options page"
   }
 }
