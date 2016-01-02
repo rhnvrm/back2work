@@ -1,11 +1,9 @@
 // Saves options to chrome.storage.sync.
 function save_options() {
-  var blist = document.getElementById('blist').value;
+  var blist = document.getElementById('blist').value.toLowerCase();
   var size  = document.getElementById('size').value;
   var position = document.getElementById('position').value;
   var sound = document.getElementById('sound').checked ? true : false;
-
-  console.log(sound);
 
   chrome.storage.sync.set({
     blackList: blist,
@@ -41,3 +39,10 @@ function restore_options() {
 
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
+
+// Translate labels
+document.getElementById("blistSpan").innerHTML = chrome.i18n.getMessage("optionsBlocklist") + ": ";
+document.getElementById("sizeSpan").innerHTML = chrome.i18n.getMessage("optionsSize") + ": ";
+document.getElementById("positionSpan").innerHTML = chrome.i18n.getMessage("optionsPosition") + ": ";
+document.getElementById("soundSpan").innerHTML = chrome.i18n.getMessage("optionsSound") + ": ";
+document.getElementById("save").innerHTML = chrome.i18n.getMessage("optionsSave");

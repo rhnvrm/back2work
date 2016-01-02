@@ -9,7 +9,7 @@ chrome.extension.sendMessage({}, function(response) {
 		// ----------------------------------------------------------
 		var current = window.location.href;
 		var bar = document.createElement("div");
-			bar.innerHTML = "GET BACK TO WORK!";
+			bar.innerHTML = chrome.i18n.getMessage("msgGetBackToWork");
 			bar.style.color = "white"
 			bar.style.backgroundColor = "dodgerblue";
 			bar.style.textAlign = "center";
@@ -31,7 +31,7 @@ chrome.extension.sendMessage({}, function(response) {
 		var source = document.createElement("source");
 			source.src = chrome.extension.getURL("src/assets/sounds/alert.ogg");
 			source.type = "audio/ogg";
-			
+
 		var audio = document.createElement("audio")
 			audio.setAttribute("loop", "true");
 			audio.appendChild(source);
@@ -93,7 +93,7 @@ chrome.extension.sendMessage({}, function(response) {
 
 		    if(items.blackList != 'error'){
 				
-				sites = items.blackList.split(',');
+				sites = items.blackList.replace(/\s/g, '').split(',');
 
 				found = 0;
 
@@ -119,9 +119,9 @@ chrome.extension.sendMessage({}, function(response) {
 
 		    	chrome.storage.sync.set({
 				    blackList: blist
-				  });
+				});
 
-		    	sites = blist.split(',');
+		    	sites = blist.replace(/\s/g, '').split(',');
 
 				found = 0;
 

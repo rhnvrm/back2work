@@ -8,18 +8,18 @@
 </head>
 
 <body>
-  Blocklist(comma separated):  <input type="text" id="blist">
-  
+  <label for="blist"><span id="blistSpan"></span></label>
+  <input type="text" id="blist">
   <br>
-  Size: 
-  <select id = "size" name="size">
+  <label for="size"><span id="sizeSpan"></span></label>
+  <select id="size" name="size">
 	  <option value="small">Small</option>
 	  <option value="medium">Medium</option>
 	  <option value="large">Large</option>
   </select>
   <br>
-  Position: 
-  <select id = "position" name="position">
+  <label for="position"><span id="positionSpan"></span></label>
+  <select id="position" name="position">
 	  <option value="9">Top Right</option>
 	  <option value="8">Top Center</option>
 	  <option value="7">Top Left</option>
@@ -31,7 +31,8 @@
 	  <option value="1">Bottom Left</option>
   </select>
   <br>
-  Sound alert: <input type="checkbox" name="sound" id="sound">
+  <label for="sound"><span id="soundSpan"></span></label>
+  <input type="checkbox" name="sound" id="sound">
   <div id="status"></div>
   <button id="save">Save</button>
 

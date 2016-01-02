@@ -2,7 +2,7 @@
   "name": "Back To Work!",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Display a notification on selected websites to remind you to get back to work.",
+  "description": "__MSG_extDescription__",
   "author":"Rohan Verma (rhnvrm) <hello@rohanverma.net>",
   "homepage_url": "http://rohanverma.net",
   "icons": {
@@ -11,16 +11,16 @@
     "128": "icons/icon128.png"
   },
   "options_ui": {
-        "page": "src/options/options.html",
-        "chrome_style": true
-        },
+    "page": "src/options/options.html",
+    "chrome_style": true
+  },
   "default_locale": "en",
   "permissions": [
     "https://*/*"
   ],
   "permissions": [
-        "storage"
-      ],
+    "storage"
+  ],
   "content_scripts": [
     {
       "matches": [
@@ -32,6 +32,6 @@
     }
   ],
   "web_accessible_resources": [
-    "src/assets/sounds/alert.ogg"
+    "src/assets/sounds/*"
   ]
 }
