@@ -19,6 +19,10 @@
     "message": "Posição",
     "description": "Label on options page"
   },
+  "optionsPrevent":{
+    "message": "Impedir navegação",
+    "description": "Label on options page"
+  },
   "optionsSound":{
     "message": "Alerta sonoro",
     "description": "Label on options page"
