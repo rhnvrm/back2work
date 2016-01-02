@@ -32,15 +32,16 @@ chrome.extension.sendMessage({}, function(response) {
 			source.src = chrome.extension.getURL("src/assets/sounds/alert.ogg");
 			source.type = "audio/ogg";
 
-		var audio = document.createElement("audio")
-			audio.setAttribute("loop", "true");
+		var audio = document.createElement("audio");
 			audio.appendChild(source);
 
 		chrome.storage.sync.get({
 		    blackList: 'error',
 		    notif_size: 'small',
 		    notif_pos: '8',
-		    sound_on: false
+		    sound_on: false,
+		    loop_on: false,
+		    prevent_on: false
 		}, function(items) {
 
 			if(items.notif_size == 'medium'){
@@ -106,7 +107,7 @@ chrome.extension.sendMessage({}, function(response) {
 
 						insertBlur();
 						insertBar();
-						insertAudio(items.sound_on);
+						insertAudio();
 					}
 				}
 
@@ -134,27 +135,31 @@ chrome.extension.sendMessage({}, function(response) {
 
 						insertBlur();
 						insertBar();
-						insertAudio(items.sound_on);
+						insertAudio();
 					}
 				}
 		    }
-		});
 
-		function insertAudio(sound_active){
-			if(sound_active){
-				document.body.insertBefore(audio, document.body.firstChild);
-				audio.play();
+		    function insertAudio(){
+				if(items.sound_on){
+					if(items.loop_on)
+						audio.setAttribute("loop", "true");
+					document.body.insertBefore(audio, document.body.firstChild);
+					audio.play();
+				}
 			}
-		}
 
-		function insertBlur(){
-			document.body.style.overflow = "hidden";
-			document.body.insertBefore(overlay, document.body.firstChild);
-		}
+			function insertBlur(){
+				if(items.prevent_on){
+					document.body.style.overflow = "hidden";
+					document.body.insertBefore(overlay, document.body.firstChild);
+				}
+			}
 
-		function insertBar(){
-			document.body.insertBefore(bar, document.body.firstChild);
-		}
+			function insertBar(){
+				document.body.insertBefore(bar, document.body.firstChild);
+			}
+		});
 
 	}
 	}, 10);
