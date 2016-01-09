@@ -10,6 +10,7 @@ chrome.extension.sendMessage({}, function(response) {
 		var current = window.location.href;
 		console.log(current);
 		var bar = document.createElement("div");
+			bar.id = "b2w_bar";
 			bar.innerHTML = chrome.i18n.getMessage("msgGetBackToWork");
 			bar.style.color = "white"
 			bar.style.backgroundColor = "dodgerblue";
@@ -18,22 +19,31 @@ chrome.extension.sendMessage({}, function(response) {
 			bar.style.padding = "2px";
 			bar.style.zIndex = "99999";
 			bar.style.borderRadius = "5px";
+			//Onclick remove overlay
+			bar.onclick = function(){ 
+				var elem = document.getElementById("b2w_overlay");
+				if(elem){
+					elem.parentElement.removeChild(elem);
+				}
+			}
 
 		var overlay = document.createElement("div");
-			overlay.setAttribute("id", "overlay");
+			overlay.id = "b2w_overlay";
 			overlay.style.width = "100%";
 			overlay.style.height = "100%";
 			overlay.style.background = "rgba(255,255,255,0.8)";
 			overlay.style.top = "0";
 			overlay.style.left = "0";
-			overlay.style.position = "absolute";
+			overlay.style.position = "fixed";
 			overlay.style.zIndex = "99998";
 
 		var source = document.createElement("source");
+			source.id = "b2w_source";
 			source.src = chrome.extension.getURL("src/assets/sounds/alert.ogg");
 			source.type = "audio/ogg";
 
 		var audio = document.createElement("audio");
+			audio.id = "b2w_source";
 			audio.appendChild(source);
 
 		chrome.storage.sync.get({
@@ -152,7 +162,7 @@ chrome.extension.sendMessage({}, function(response) {
 
 			function insertBlur(){
 				if(items.prevent_on){
-					document.body.style.overflow = "hidden";
+					//document.body.style.overflow = "hidden";
 					document.body.insertBefore(overlay, document.body.firstChild);
 				}
 			}

@@ -20,15 +20,15 @@
     "description": "Label on options page"
   },
   "optionsPrevent":{
-    "message": "Prevent navigation",
+    "message": "Blurred Screen",
     "description": "Label on options page"
   },
   "optionsSound":{
-    "message": "Sound alert",
+    "message": "Sound Alert",
     "description": "Label on options page"
   },
   "optionsLoop":{
-    "message": "Alert loop",
+    "message": "Alert Loop",
     "description": "Label on options page"
   },
   "optionsSave":{
@@ -36,7 +36,7 @@
     "description": "Save button on options page"
   },
   "optionsSaved":{
-    "message": "Options saved.",
+    "message": "Options Saved!",
     "description": "Return message on options page"
   }
 }

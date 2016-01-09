@@ -3,21 +3,55 @@
 <head>
   <title>SNU Data Limit Options</title>
   <style>
-    body: { padding: 10px; }
+
+    body { 
+      padding: 10px; 
+      width: 300px;
+      display: table;
+    }
+
+    p { 
+      display: table-row;  
+    }
+
+    label { 
+      display: table-cell; 
+    }
+
+    input { 
+      display: table-cell; 
+      vertical-align:middle;
+    }
+
+    input[type="checkbox"]{
+      display:inline-block;
+      vertical-align:middle;
+    }
+
+    select {
+      display: table-cell;
+      vertical-align:middle;
+    }
+
   </style>
 </head>
 
 <body>
-  <label for="blist"><span id="blistSpan"></span></label>
-  <input type="text" id="blist">
-  <br>
+  <p>
+    <label for="blist">
+      <span id="blistSpan"></span>
+    </label>
+    <input type="text" id="blist">
+  </p>
+  <p>
   <label for="size"><span id="sizeSpan"></span></label>
   <select id="size" name="size">
 	  <option value="small">Small</option>
 	  <option value="medium">Medium</option>
 	  <option value="large">Large</option>
   </select>
-  <br>
+  </p>
+  <p>
   <label for="position"><span id="positionSpan"></span></label>
   <select id="position" name="position">
 	  <option value="9">Top Right</option>
@@ -30,18 +64,23 @@
 	  <option value="2">Bottom Center</option>
 	  <option value="1">Bottom Left</option>
   </select>
-  <br>
+  </p>
+  <p>
   <label for="prevent"><span id="preventSpan"></span></label>
   <input type="checkbox" name="prevent" id="prevent">
-  <br>
+  </p>
+  <p>
   <label for="sound"><span id="soundSpan"></span></label>
   <input type="checkbox" name="sound" id="sound">
-  <br>
+  </p>
+  <p>
   <label for="loop"><span id="loopSpan"></span></label>
   <input type="checkbox" name="loop" id="loop">
+  </p>
   <div id="status"></div>
+  <p>
   <button id="save">Save</button>
-
+  </p>
   <script src="options.js"></script>
 </body>
 </html>

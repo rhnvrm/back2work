@@ -20,7 +20,7 @@
     "description": "Label on options page"
   },
   "optionsPrevent":{
-    "message": "Impedir navegação",
+    "message": "Impedir navegação (Blur The Screen)",
     "description": "Label on options page"
   },
   "optionsSound":{
