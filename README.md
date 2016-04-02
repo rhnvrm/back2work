@@ -14,3 +14,4 @@ Clone this repo and drag-drop it onto the extensions page on Google Chrome.
 ![Reddit 1](screens/reddit1.png)
 ![Reddit 2](screens/reddit2.png)
 ![Facebook](screens/fb.png)
+![Options](screens/Screenshot from 2016-04-02 23:16:37.png)
